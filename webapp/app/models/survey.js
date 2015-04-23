@@ -6,7 +6,10 @@ var surveySchema = new Schema({
     author: String,
     created: { type: Date, default: Date.now },
     active:  Boolean,
-    question: String
+    question: String,
+
+    // Tokens
+    tokens: []
 });
 
 module.exports = mongoose.model('Survey', surveySchema);

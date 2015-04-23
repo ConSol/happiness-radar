@@ -8,7 +8,7 @@
     "bootable-environment": "0.2.x",
     "express": "3.x.x",
     "connect-powered-by": "0.1.x",
-    "ejs": "0.8.x",
+    "jade": "1.9.x",
     "mongoose": "2.5.x",
     "locomotive-mongoose": "0.1.x"
   },

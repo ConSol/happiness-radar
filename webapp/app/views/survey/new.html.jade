@@ -1,0 +1,15 @@
+doctype html
+html
+  include ../head.jade
+  body
+    h1 New Survey
+    p Add new survey!
+    form(action = 'survey', method='POST', class="form-horizontal")
+      .form-group
+        label(for='name') Name
+        input(type='text', name='name')
+      .form-group
+        label(for='question') Question
+        input(type='text', name='question')
+      .form-actions
+        button.btn.btn-primary(type='submit') Create
