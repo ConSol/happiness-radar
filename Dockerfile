@@ -1,7 +1,7 @@
 FROM google/nodejs
 
-MAINTAINER tobias.schneck@consol.de, christoph.deppisch@consol.de
-
+MAINTAINER Tobias Schneck "tobias.schneck@consol.de", Christoph Deppisch "christoph.deppisch@consol.de"
+ENV REFRESHED_AT 2015-04-23
 WORKDIR /app
 ADD package.json /app/
 RUN npm install
