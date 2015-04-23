@@ -1,8 +1,10 @@
 web:
-  image: toschneck/dockertraining-ex1
+  image: consol/happiness-radar-webapp
   links:
-   - redis
+   - mongodb
   ports:
-   - "8080:3000"
-redis:
-  image: redis
+   - "3000:3000"
+mongodb:
+  image: mongo
+  ports:
+  - "27017:27017"
