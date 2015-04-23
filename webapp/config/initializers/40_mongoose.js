@@ -27,15 +27,14 @@ module.exports = function () {
             var url = 'mongodb://' + host + ':' + port + '/test';
             console.log("MONGO CONNECT URL:" + url);
             this.mongoose.connect(url);
-        //case 'development':
-        //    mongoose.connect('mongodb://mongodb.example.com/dev');
-        //    break;
-        //case 'production':
-        //    mongoose.connect('mongodb://mongodb.example.com/prod');
-        //    break;
+
+            var db = this.mongoose.connection;
+            db.on('error', function (e) {
+                console.error.bind(console, 'connection error:');
+                throw 'MONGO DB CONNECTION ERROR: ' + e;
+            });
+            db.once('open', function () {
+                console.log('MONGO DB CONNECTED!')
+            });
     }
-    //this.mongooseTypes = require("mongoose-types");
-    //this.mongooseTypes.loadTypes(this.mongoose);
-    //mongoose.model('User', schemas.UserSchema);
-    //mongoose.model('Post', schemas.PostSchema);
-}
+};
