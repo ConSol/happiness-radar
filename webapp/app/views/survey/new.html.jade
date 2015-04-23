@@ -17,3 +17,7 @@ html
       .form-group
         div(class='col-sm-offset-1 col-sm-3')
           button.btn.btn-primary(type='submit') Create
+
+    ul
+      each survey in surveys.length
+        li= survey.name

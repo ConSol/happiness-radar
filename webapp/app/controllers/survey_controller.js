@@ -1,4 +1,5 @@
 var locomotive = require('locomotive');
+var _ = require('underscore');
 var Controller = locomotive.Controller;
 
 var SurveyController = new Controller();
@@ -6,16 +7,10 @@ var SurveyController = new Controller();
 var Survey = require('../models/survey');
 
 SurveyController.new = function () {
-    this.render();
-}
-
-SurveyController.list = function() {
-    var myTitle;
-    var survey =
-        Survey.find(function (error, surveys) {
-            console.log(surveys);
-        });
-    this.title = 'Latest Survey: ' + survey.name + ', created: ' + survey.created;
+    Survey.find(_.bind(function (error, response) {
+        console.log(response);
+        this.surveys = surveys;
+    }), this);
 
     this.render();
 }

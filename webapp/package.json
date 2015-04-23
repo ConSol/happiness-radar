@@ -10,7 +10,8 @@
     "connect-powered-by": "0.1.x",
     "jade": "1.9.x",
     "mongoose": "2.5.x",
-    "locomotive-mongoose": "0.1.x"
+    "locomotive-mongoose": "0.1.x",
+    "underscore": "1.8.x"
   },
   "scripts": {
     "start": "node server.js"
