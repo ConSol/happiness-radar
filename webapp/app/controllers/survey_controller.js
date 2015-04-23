@@ -7,9 +7,11 @@ var SurveyController = new Controller();
 var Survey = require('../models/survey');
 
 SurveyController.new = function () {
+    this.surveys = ["DEMO", "DEMO2"];
+
     Survey.find(_.bind(function (error, response) {
         console.log(response);
-        this.surveys = surveys;
+        this.surveys = response;
     }), this);
 
     this.render();
