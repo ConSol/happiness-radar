@@ -1,0 +1,8 @@
+web:
+  image: toschneck/dockertraining-ex1
+  links:
+   - redis
+  ports:
+   - "8080:3000"
+redis:
+  image: redis
