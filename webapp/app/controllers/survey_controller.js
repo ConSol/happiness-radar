@@ -3,16 +3,19 @@ var _ = require('underscore');
 var Controller = locomotive.Controller;
 
 var SurveyController = new Controller();
-
 var Survey = require('../models/survey');
 
 SurveyController.new = function () {
-    Survey.find(_.bind(function (error, response) {
-        console.log(response);
-        this.surveys = surveys;
-    }), this);
-
-    this.render();
+    var self = this;
+    Survey.find(function (error, response) {
+        if (error) {
+            console.log('ERROR:' + error);
+            throw error;
+        } else {
+            console.log(response);
+            self.render({ surveys: response });
+        }
+    });
 }
 
 SurveyController.create = function () {
@@ -21,10 +24,10 @@ SurveyController.create = function () {
     survey.active = true;
     survey.question = this.param('question');
 
-    survey.save(function (err) {
-        if (err) {
-            console.log('ERROR:' + err);
-            throw err;
+    survey.save(function (error) {
+        if (error) {
+            console.log('ERROR:' + error);
+            throw error;
         } else {
             console.log('SUCCESS!');
         }

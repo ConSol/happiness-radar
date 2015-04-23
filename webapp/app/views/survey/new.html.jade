@@ -2,22 +2,24 @@ doctype html
 html
   include ../head.jade
   body
-    h1 New Survey
-    h4 Add new survey!
-    br
-    form(action = 'survey', method='POST', class="form-horizontal")
-      .form-group
-        label(for='name', class="col-sm-1 control-label") Name
-        .col-sm-3
-          input(type='text', name='name', class="form-control")
-      .form-group
-        label(for='question', class="col-sm-1 control-label") Question
-        .col-sm-3
-          input(type='text', name='question', class="form-control")
-      .form-group
-        div(class='col-sm-offset-1 col-sm-3')
-          button.btn.btn-primary(type='submit') Create
+    .container
+      h1 New Survey
+      h4 Add new survey!
+      br
+      form(action = 'survey', method='POST', class="form-horizontal")
+        .form-group
+          label(for='name', class="col-sm-1 control-label") Name
+          .col-sm-3
+            input(type='text', name='name', class="form-control")
+        .form-group
+          label(for='question', class="col-sm-1 control-label") Question
+          .col-sm-3
+            input(type='text', name='question', class="form-control")
+        .form-group
+          div(class='col-sm-offset-1 col-sm-3')
+            button.btn.btn-primary(type='submit') Create
 
-    ul
-      each survey in surveys.length
-        li= survey.name
+      ul(id = 'surveys')
+        each survey in surveys
+          li
+            a(href= 'survey/' + survey.name)= survey.name + ' ' + survey.question
