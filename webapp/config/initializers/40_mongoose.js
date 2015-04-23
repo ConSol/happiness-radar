@@ -7,9 +7,24 @@ module.exports = function () {
         default :
             //mongoose.connect('$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test');
             //this.mongoose.connect('mongodb://172.17.0.24:27017/test');
-            var hostAddress = process.env.MONGO_PORT_27017_TCP_ADDR + ':' + process.env.MONGO_PORT_27017_TCP_PORT;
 
-            var url = 'mongodb://' + hostAddress + '/test';
+            //determine host
+            var host;
+            if (process.env.MONGO_PORT_27017_TCP_ADDR) {
+                host = process.env.MONGO_PORT_27017_TCP_ADDR;
+            } else {
+                host = 'localhost'
+            }
+
+            //determine port
+            var port;
+            if (process.env.MONGO_PORT_27017_TCP_PORT) {
+                port = process.env.MONGO_PORT_27017_TCP_PORT;
+            } else {
+                port = 27017;
+            }
+
+            var url = 'mongodb://' + host + ':' + port + '/test';
             console.log("MONGO CONNECT URL:" + url);
             this.mongoose.connect(url);
         //case 'development':
