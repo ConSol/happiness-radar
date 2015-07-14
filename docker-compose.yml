@@ -1,11 +1,23 @@
-web:
+web100:
   build: webapp
   links:
-   - mongodb
+    - mongodb100
   ports:
-   - "3000:3000"
+    - 3000:3000
   environment:
-     MONGO_PORT_27017_TCP_ADDR: mongodb
-     MONGO_PORT_27017_TCP_PORT: 27017
-mongodb:
+     MONGO_PORT_27017_TCP_ADDR: mongodb100
+     MONGO_PORT_27017_TCP_PORT: 27000
+
+mongodb100:
   image: mongo
+#  build: mongo_image
+  command: "mongod --noprealloc --smallfiles --port 27000"
+#  expose:
+#    - 27000
+#  ports:
+#    - 27000:27000
+#  environment:
+#     MONGO_PORT_27017_TCP_PORT: 27000
+  volumes:
+    - ./mongodata:/data/db
+
