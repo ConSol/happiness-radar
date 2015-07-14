@@ -12,6 +12,10 @@
 hs_err_pid*
 .idea
 *.iml
+*.log
 
 ##node-js
 node_modules
+
+#mongodata-storag
+/mongodata*
